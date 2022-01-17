@@ -1,0 +1,151 @@
+CREATE TABLE ciudad(
+	ciudad_id bigserial PRIMARY KEY,
+	ciudad_name VARCHAR ( 50 ) NOT NULL,
+        fecha_creacion_ciudad date NOT NULL
+);
+
+
+
+
+CREATE TABLE tipo_documento(
+	tipo_documento_id bigserial PRIMARY KEY,
+	tipo_documento_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+        fecha_creacion_tipo_documento date NOT NULL
+);
+
+
+
+CREATE TABLE cargo(
+	cargo_id bigserial PRIMARY KEY,
+	cargo_name VARCHAR ( 50 ) NOT NULL,
+        codigo_dane int NOT NULL,
+        fecha_creacion_cargo date NOT NULL
+);
+
+
+
+CREATE TABLE empleado(
+	empleado_id bigserial PRIMARY KEY,
+	empleado_name VARCHAR ( 50 ) NOT NULL,
+        last_name VARCHAR ( 50 ) NOT NULL,
+        empleado_cargo_id bigint NOT NULL,
+        empleado_tipo_documento_id bigint NOT NULL,
+        empleado_ciudad_id bigint NOT NULL,
+        salario int NOT NULL,
+        empleado_usuario_id bigint NOT NULL,
+        fecha_creacion_empleado date NOT NULL
+        
+
+
+);
+
+CREATE TABLE usuario(
+  usuario_id bigserial  PRIMARY KEY,
+  usuario_name VARCHAR ( 50 ) NOT NULL,
+  usuario_last_name VARCHAR ( 50 ) NOT NULL
+);
+
+
+
+
+
+ALTER TABLE empleado
+ADD CONSTRAINT empleado_cargo_id_fkey
+FOREIGN KEY (empleado_cargo_id) REFERENCES cargo(cargo_id);
+
+
+ALTER TABLE empleado
+ADD CONSTRAINT empleado_tipo_documento_id_fkey 
+FOREIGN KEY (empleado_tipo_documento_id) REFERENCES tipo_documento(tipo_documento_id);
+
+ALTER TABLE empleado
+ADD CONSTRAINT empleado_ciudad_id_fkey
+FOREIGN KEY (empleado_ciudad_id) REFERENCES ciudad(ciudad_id);
+
+ALTER TABLE empleado
+ADD CONSTRAINT empleado_usuario_id_fkey
+FOREIGN KEY (empleado_usuario_id) REFERENCES usuario(usuario_id);
+
+
+
+
+
+insert into ciudad(ciudad_name,fecha_creacion_ciudad )
+  values('CALI',current_timestamp);
+
+insert into ciudad(ciudad_name,fecha_creacion_ciudad )
+  values('MEDELLIN',current_timestamp);
+
+insert into tipo_documento(tipo_documento_name,fecha_creacion_tipo_documento)
+  values('CEDULA DE CIUDADANIA',current_timestamp);
+
+insert into tipo_documento(tipo_documento_name,fecha_creacion_tipo_documento)
+  values('PASAPORTE',current_timestamp);
+
+insert into cargo(cargo_name ,codigo_dane,fecha_creacion_cargo )
+  values('INGENIERO DE SISTEMAS','2495',current_timestamp);
+
+insert into cargo(cargo_name ,codigo_dane,fecha_creacion_cargo )
+  values('INGENIERO DE CIVIL','2496',current_timestamp);
+
+insert into usuario(usuario_name ,usuario_last_name)
+  values('Juan','Martinez');
+
+insert into usuario(usuario_name ,usuario_last_name)
+  values('Carlos','Cossio');
+
+insert into empleado(empleado_id,empleado_name,last_name ,empleado_cargo_id, empleado_tipo_documento_id, empleado_ciudad_id,salario, empleado_usuario_id,fecha_creacion_empleado)
+  values(1143834552,'CRISTIAN','ALEGRIA',3,3,3,4000000,3,current_timestamp);
+
+insert into empleado(empleado_id,empleado_name,last_name ,empleado_cargo_id, empleado_tipo_documento_id, empleado_ciudad_id, salario, empleado_usuario_id, fecha_creacion_empleado)
+  values(123456789,'MARCELO','CASTAÑEDA',4,4,4,5000000,4,current_timestamp);
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
+/*ALTER TABLE empleado ADD COLUMN empleado_usuario_id  bigint;*/
+
+SELECT
+      td.tipo_documento_id,
+      td.tipo_documento_name,
+      em.empleado_id,
+      em.empleado_name,
+      em.last_name,
+      em.salario,
+      em.fecha_creacion_empleado,  
+      ca.cargo_id,
+      ca.cargo_name, 
+      ca.codigo_dane,
+      ci.ciudad_id,
+      ci.ciudad_name,
+      us.usuario_name UsuarioCreacion,
+      us.usuario_last_name
+                  
+  
+FROM  empleado em 
+
+INNER JOIN ciudad ci ON em.empleado_ciudad_id = ci.ciudad_id 
+INNER JOIN cargo ca ON em.empleado_cargo_id  = ca.cargo_id
+INNER JOIN tipo_documento td ON em.empleado_tipo_documento_id = td.tipo_documento_id 
+INNER JOIN usuario us ON em.empleado_usuario_id = us.usuario_id 
+
+ORDER BY empleado_name;
+
+//////////////////////////////////////////////////
+
+
+SELECT ciudad_id,ciudad_name  FROM ciudad;
+SELECT cargo_id,cargo_name,codigo_dane  FROM cargo;
+SELECT tipo_documento_id,tipo_documento_name  FROM tipo_documento;
+
+/////////////////////////////////////////////////
+update empleado set empleado_id =11434, empleado_name ='Cris',last_name='ale' ,empleado_cargo_id=1,
+                    empleado_tipo_documento_id=1, empleado_ciudad_id=1 ,salario=3000000
+                    where empleado_id=1143834552;
+
+                    
+///////////////////////////////////////////////
+delete from empleado
+where empleado_id = 11434;

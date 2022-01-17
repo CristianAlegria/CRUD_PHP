@@ -1,0 +1,88 @@
+<?php
+     
+     //Ejercicio 1
+     //Suma=1+2+3-4+5+6+7-8...N
+     //N=8
+     //Suma=12
+
+      $N=8;
+      $contador =0;
+      $suma =0;
+     for ($i=1; $i <= $N ; $i++) {         	
+        	$contador++;
+        	if ($contador==4) {
+        		$suma-=$i;
+        		$contador=0;
+        	}else{
+        		$suma+=$i;        		
+        	}
+     }
+
+     echo "Suma Ejercicio 1: ".$suma;
+
+   /****************************************************/
+
+   //Ejercicio 2
+     //Suma=2+4+16+256...N
+     //N=256
+     //Suma=278
+
+      $N=256;
+      $contador =0;
+      $suma =0;
+     for ($i=2; $i <= $N ; $i*=$i) {   	
+        	
+        	$suma+=$i;
+     } 
+    echo "<br>";
+     echo "Suma Ejercicio 2: ".$suma;
+
+     
+     /***************************************************/
+
+
+     //Ejercicio 3
+     //Suma=1+3-5+7+9-11...N
+     //N=11
+     //Suma=4
+
+      $N=11;
+      $contador =0;
+      $suma =0;
+     for ($i=1; $i <= $N ; $i+=2) {         	
+        	$contador++;
+        	if ($contador==3) {
+        		$suma-=$i;
+        		$contador=0;
+        	}else{
+        		$suma+=$i;        		
+        	}
+     }
+     
+     echo "<br>";
+     echo "Suma Ejercicio 3: ".$suma;
+
+      /***************************************************/
+
+
+     //Ejercicio 4
+     //Suma=2+4+6+8-10+12+14+16+18-20...N
+     //N=20
+     //Suma=50
+
+      $N=20;
+      $contador =0;
+      $suma =0;
+     for ($i=2; $i <= $N ; $i+=2) {         	
+        	$contador++;
+        	if ($contador==5) {
+        		$suma-=$i;
+        		$contador=0;
+        	}else{
+        		$suma+=$i;        		
+        	}
+     }
+     
+     echo "<br>";
+     echo "Suma Ejercicio 4: ".$suma;
+?>
