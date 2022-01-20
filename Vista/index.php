@@ -49,9 +49,9 @@
                           <td>Mark</td>
                           <td>Otto</td>
                           <td>@mdo</td>
-                          <td>
-                            <a href="">🗑️Borrar</a>
-                            <a href="">✏️Editar</a>
+                          <td>                           
+                            <a href="#idModalEditar" class="btn btn-success btn-sm" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span>✏️Editar </a>
+					              		<a href="#idModalEliminar" data-toggle="modal"><span class="glyphicon glyphicon-trash"></span>🗑️Borrar</a>
                           </td>
                         </tr>                        
                       </tbody>
@@ -62,6 +62,8 @@
       
 
       <?php include('crear_empleado.php'); ?>
+      <?php include('editar.php'); ?>
+      <?php include('eliminar.php'); ?>
       <!-- jQuery -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>     
       <!-- Javascript Bootstrap -->
