@@ -5,8 +5,10 @@
      
 
          
-	        $cedula= $_POST['nameCed'];
-	     	$opcion=$_GET["opcion"];
+	        $nombres= $_POST['nombres'];
+            echo $nombres;
+			 
+	     	/*$opcion=$_GET["opcion"];
             
           
 			$empleado = new Empleado();	
@@ -27,8 +29,8 @@
 			        $empleado->crearEmpleado();			        
 			        break;
 			    case 2:
-			       // $empleado-> eliminarEmpleado($cedula);
-			            echo json_encode($opcion);	
+			         $empleado-> eliminarEmpleado($cedula);
+			            echo json_encode(1);	
 			        break;
 		        case 3:
 		              guardarDatos();
@@ -50,9 +52,9 @@
 			$idCiudad = $_POST['nameCiudad']; 
 		   }
 		    
-			//header('Location: ../Vista/index.php');//ir a la pagina que estaba*/
+			//header('Location: ../Vista/index.php');//ir a la pagina que estaba
 	              		
-
+*/
       
       
 
