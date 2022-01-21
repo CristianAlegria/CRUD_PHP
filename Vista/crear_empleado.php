@@ -1,5 +1,5 @@
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="idModalCrearEmpleado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -10,12 +10,17 @@
               <br>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Tipo Documento</label>
-                    <select class="form-control" id="selectTipoDocumento">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
+                    <select class="form-control" name="nameTipoDocumento" id="idTipoDocumento" >
+                        <option selected>SELECCIONE</option>
+                        <?php
+                          include_once("../Controlador/ControladorConsulta.php");
+                          $controladorConsulta = new ControladorConsulta();
+
+                          $tiposDocumentos= $controladorConsulta->CargarTipoDocumento();
+                          for($i=0; $i< sizeof($tiposDocumentos); $i++){
+                              echo '<option value="'. $tiposDocumentos[$i]->getId().'">'. $tiposDocumentos[$i]->getNombre().'</option>';
+                          }								          
+                       ?>
                     </select>
                 </div> 
 
@@ -36,22 +41,28 @@
 
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Cargo</label>
-                  <select class="form-control" id="selectCargo">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <?php ?>
+                  <select class="form-control" name="nameCargo" id="idCargo">
+                      <option selected>SELECCIONE</option>
+                      <?php					          	
+                          $cargos= $controladorConsulta->CargarCargos();
+                          for($i=0; $i< sizeof($cargos); $i++){
+                             echo '<option value="'. $cargos[$i]->getId().'">'. $cargos[$i]->getNombre().'</option>';
+                          }								          
+                      ?>
                   </select>
                 </div>    
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Ciudad</label>
-                  <select class="form-control" id="selectCiudad">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <select class="form-control" name="nameCiudad" id="idCiudad">
+                      <option selected>SELECCIONE</option>
+                      <?php
+                          
+                          $ciudades= $controladorConsulta->CargarCiudades();
+                          for($i=0; $i< sizeof($ciudades); $i++){
+                            echo '<option value="'. $ciudades[$i]->getId().'">'. $ciudades[$i]->getNombre().'</option>';
+                          }								          
+                     ?>
                   </select>
                 </div>          
 

@@ -1,10 +1,10 @@
 <!-- Ventana Editar Registros CRUD -->
-<div class="modal fade" id="idModalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditar" aria-hidden="true">
+<div class="modal fade"  id="idModalEditar_<?php echo $empleados[$i]->getCedula(); ?>" tabindex="-1" role="dialog" aria-labelledby="modalEditar" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <center><h4 class="modal-title" id="myModalLabel">Editar Empleado</h4></center>
+                <center><h4 class="modal-title" id="myModalLabel">Editar Empleado <?php echo $empleados[$i]->getCedula(); ?></h4></center>
             </div>
             <div class="modal-body">
 			<div class="container-fluid">
@@ -23,7 +23,7 @@
                     </div> 
 
                     <div class="row form-group">                  
-                        <label class="control-label" >Numero Cedula:</label>                
+                        <label class="control-label" >Numero Cedula 777:</label>                
                         <input type="text" class="form-control" id="idCedula" name="nameCedula">                  
                     </div>
                                         
