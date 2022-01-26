@@ -5,7 +5,7 @@
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Crear Empleado</h5>
               
-              <form  method="POST" action="../Controlador/ControladorEmpleado.php">
+              <form  method="POST" action="../Controlador/ControladorEmpleado.php?opcion=1">
               <br>
               <br>
                 <div class="form-group">
@@ -72,7 +72,7 @@
                 </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
-                            <button type="submit" name="agregar" class="btn btn-primary"><span class="glyphicon glyphicon-check"></span>Actualizar Ahora</button>			
+                            <button type="submit" name="agregar" class="btn btn-primary"><span class="glyphicon glyphicon-check"></span>Aceptar</button>			
                         </div>
 
               </form>

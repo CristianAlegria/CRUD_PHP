@@ -4,11 +4,15 @@
 
      
 
-         
-	        $nombres= $_POST['nombres'];
-            echo $nombres;
+            if (isset($_GET["id"])) {
+				$cedula=  $_GET["id"];
+			}else{
+				$cedula= $_POST['nameCedula'];;
+			}
+	        
+            
 			 
-	     	/*$opcion=$_GET["opcion"];
+	     	$opcion=$_GET["opcion"];
             
           
 			$empleado = new Empleado();	
@@ -30,7 +34,7 @@
 			        break;
 			    case 2:
 			         $empleado-> eliminarEmpleado($cedula);
-			            echo json_encode(1);	
+			            //echo json_encode(1);	
 			        break;
 		        case 3:
 		              guardarDatos();
@@ -52,9 +56,9 @@
 			$idCiudad = $_POST['nameCiudad']; 
 		   }
 		    
-			//header('Location: ../Vista/index.php');//ir a la pagina que estaba
+			header('Location: ../Vista/index.php');//ir a la pagina que estaba
 	              		
-*/
+
       
       
 

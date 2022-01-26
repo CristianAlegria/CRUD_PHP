@@ -23,8 +23,14 @@
                 <div class="form-group mr-3">
                   <input type="text" id="idCedula" name="nameCedula" placeholder="Buscar por # cedula" class="form-control">
                 </div>
-                <button type="submit" name="submit" class="btn btn-primary">Ver resultados</button>
+                <button type="submit" name="submit" class="btn btn-primary">Buscar
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+                </button>
             </form>
+            <a class="btn btn-primary" href="index.php" role="button">Listar Empleados</a>
+            
              </div>
           </div>
        </div>
@@ -33,8 +39,8 @@
           <div class="row">
              <div class="col-md-12">
                 <h2 class="mt-3">Tabla Empleados</h2>
-                    <table class="table">
-                      <thead>
+                    <table class="table table-striped">
+                      <thead class="thead-dark">
                         <tr>
                           <th scope="col">DOCUMENTO DE IDENTIDAD</th>
                           <th scope="col"># CEDULA</th>
@@ -62,11 +68,11 @@
                                       <td>'.$empleado->getCiudad()->getNombre().'</td>
                                       <td>'.$empleado->getSalario().'</td> 
                                       <td>                        
-                                          <a href="#idModalEditar" class="btn btn-success btn-sm" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span>✏️Editar </a>
-                                          <a href="#idModalEliminar" data-toggle="modal"><span class="glyphicon glyphicon-trash"></span>🗑️Borrar</a>
+                                          <a href="#idModalEditar_'.$empleado->getCedula().'" class="btn btn-success btn-sm" data-toggle="modal">✏️Editar </a>
+                                          <a href="#idModalEliminar_'.$empleado->getCedula().'" class="btn btn-danger"  data-toggle="modal">🗑️Borrar</a>
                                       </td>            
                                   </tr>';
-                                echo $empleado->getCedula();
+                                
 
                           }else{
                             $controladorConsulta = new ControladorConsulta(); 
@@ -81,8 +87,8 @@
                                       <td>".$empleados[$i]->getCiudad()->getNombre()."</td>
                                       <td>".$empleados[$i]->getSalario().'</td>
                                       <td>                        
-                                          <a href="#idModalEditar_'.$empleados[$i]->getCedula().'" class="btn btn-success btn-sm" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span>✏️Editar </a>
-                                          <a href="#idModalEliminar_'.$empleados[$i]->getCedula().'" data-toggle="modal"><span class="glyphicon glyphicon-trash"></span>🗑️Borrar</a>
+                                          <a href="#idModalEditar_'.$empleados[$i]->getCedula().'" class="btn btn-success btn-sm" data-toggle="modal">✏️Editar </a>
+                                          <a href="#idModalEliminar_'.$empleados[$i]->getCedula().'" class="btn btn-danger" data-toggle="modal">🗑️Borrar</a>
                                       </td>
                                   </tr>';
                                   include('editar.php');
