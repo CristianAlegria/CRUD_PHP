@@ -59,19 +59,24 @@
                               $cedula= $_POST['nameCedula'];
                               $controladorConsulta = new ControladorConsulta();  
                               $empleado = $controladorConsulta->MostrarEmpleado($cedula);                 
-                                    
-                              echo '<tr>
-                                      <td>'.$empleado->getTipo_documento()->getNombre().'</td>
-                                      <td>'.$empleado->getCedula().'</td>
-                                      <td>'.$empleado->getNombre().' '.$empleado->getApellido().'</td>                      
-                                      <td>'.$empleado->getCargo()->getNombre().'</td>
-                                      <td>'.$empleado->getCiudad()->getNombre().'</td>
-                                      <td>'.$empleado->getSalario().'</td> 
-                                      <td>                        
-                                          <a href="#idModalEditar_'.$empleado->getCedula().'" class="btn btn-success btn-sm" data-toggle="modal">✏️Editar </a>
-                                          <a href="#idModalEliminar_'.$empleado->getCedula().'" class="btn btn-danger"  data-toggle="modal">🗑️Borrar</a>
-                                      </td>            
-                                  </tr>';
+                              $empleados = array($empleado);
+                              for ($i=0; $i <sizeof($empleados) ; $i++) { 
+                              
+                                echo "<tr>
+                                        <td>".$empleados[$i]->getTipo_documento()->getNombre()."</td>
+                                        <td>".$empleados[$i]->getCedula()."</td>
+                                        <td>".$empleados[$i]->getNombre()." ".$empleados[$i]->getApellido()."</td>                      
+                                        <td>".$empleados[$i]->getCargo()->getNombre()."</td>
+                                        <td>".$empleados[$i]->getCiudad()->getNombre()."</td>
+                                        <td>".$empleados[$i]->getSalario().'</td>
+                                        <td>                        
+                                            <a href="#idModalEditar_'.$empleados[$i]->getCedula().'" class="btn btn-success btn-sm" data-toggle="modal">✏️Editar </a>
+                                            <a href="#idModalEliminar_'.$empleados[$i]->getCedula().'" class="btn btn-danger" data-toggle="modal">🗑️Borrar</a>
+                                        </td>
+                                    </tr>';
+                                    include('editar.php');
+                                    include('eliminar.php');
+                              }
                                 
 
                           }else{
